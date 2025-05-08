@@ -1,27 +1,28 @@
 <?php
-echo "enter the opration\n";
+function calculate($num1, $num2, $operator) {
+    switch ($operator) {
+        case "+":
+            return $num1 + $num2;
+        case "-":
+            return $num1 - $num2;
+        case "*":
+            return $num1 * $num2;
+        case "/":
+            return $num2 != 0 ? $num1 / $num2 : "Error: Division by zero!";
+        default:
+            return "Invalid operator!";
+    }
+}
+
+echo "Enter first number:\n";
 $num1 = (float)trim(fgets(STDIN));
-$opt = trim(fgets(STDIN));
+
+echo "Enter operation (+, -, *, /):\n";
+$op = trim(fgets(STDIN));
+
+echo "Enter second number:\n";
 $num2 = (float)trim(fgets(STDIN));
 
-switch ($opt) {
-    case "+":
-	echo "sol: " . ( $num1+$num2) . "\n";
-	break;
-    case "-":
-	echo "sol: " . ($num1-$num2) . "\n";
-	break;
-    case "*":
-	echo "sol: " . ($num1*$num2) . "\n";
-	break;
-    case "/":
-	if ($num2 != 0) {
-	    echo "sol: " . ($num1/$num2) . "\n" ;
-	} else {
-	    echo "Error: Division by zero!\n";
-	}
-	break;
-    default:
-	echo "Invalid operator.\n";
-}
+$result = calculate($num1, $num2, $op);
+echo "Result: $result\n";
 ?>
